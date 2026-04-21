@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barista Latte Art Portfolio</title>
+  <style>
+    :root {
+      --coffee-dark: #3e2723;
+      --coffee-medium: #6d4c41;
+      --coffee-cream: #f5e6d3;
+      --coffee-milk: #fff9f2;
+      --accent: #b07a4f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--coffee-cream), var(--coffee-milk));
+      color: var(--coffee-dark);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid #e3d3bf;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(62, 39, 35, 0.15);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .profile-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid var(--accent);
+      background: #efe0ce;
+    }
+
+    .profile-name {
+      color: var(--coffee-dark);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .language-switch {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .language-switch button {
+      border: 1px solid var(--coffee-medium);
+      background: white;
+      color: var(--coffee-dark);
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .language-switch button.active {
+      background: var(--coffee-medium);
+      color: white;
+    }
+
+    .intro {
+      margin-top: 1rem;
+      text-align: center;
+      padding: 0.75rem;
+    }
+
+    h1 {
+      color: var(--coffee-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      color: var(--coffee-medium);
+      font-style: italic;
+    }
+
+    .gallery {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e9d9c7;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .card img {
+      width: 100%;
+      max-width: 500px;
+      max-height: 500px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .card-content {
+      padding: 0.9rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.45rem;
+      color: var(--coffee-dark);
+    }
+
+    .card p {
+      color: #5f4a44;
+      line-height: 1.4;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div class="profile-section">
+        <img
+          class="profile-image"
+          src="img/profile/michaeltong.png"
+          alt="Profile image"
+        />
+        <p class="profile-name">Michael Tong</p>
+      </div>
+
+      <div class="language-switch" aria-label="Language switcher">
+        <button id="btn-en" class="active" type="button">English</button>
+        <button id="btn-de" type="button">Deutsch</button>
+      </div>
+    </div>
+
+    <section class="intro">
+      <h1 data-en="My Latte Art Portfolio" data-de="Mein Latte Art Portfolio">My Latte Art</h1>
+      <p
+        class="subtitle"
+        data-en="A showcase of my favorite coffee creations."
+        data-de="Ein Showcase meiner liebsten Kaffee-Kreationen."
+      >
+        A barista-style showcase of my favorite coffee creations.
+      </p>
+    </section>
+
+    <section class="gallery">
+      <article class="card">
+        <img src="img/arts/heart.jpg" alt="Heart latte art" />
+        <div class="card-content">
+          <h3 data-en="Heart" data-de="Herz">Heart</h3>
+          <p
+            data-en="A cappuccino with a classic heart pour, perfect for springtime, featuring silky microfoam and a clean finish."
+            data-de="Ein Cappuccino mit klassischem Herzausguss, perfekt für die Frühjahrszeit, mit seidigem Mikroschaum und sauberem Abschluss."
+          >
+            A cappuccino with a classic heart pour, perfect for springtime, featuring silky microfoam and a clean finish.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const btnEn = document.getElementById("btn-en");
+    const btnDe = document.getElementById("btn-de");
+
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+      document.querySelectorAll("[data-en][data-de]").forEach((el) => {
+        el.textContent = el.dataset[language];
+      });
+      btnEn.classList.toggle("active", language === "en");
+      btnDe.classList.toggle("active", language === "de");
+    }
+
+    btnEn.addEventListener("click", () => setLanguage("en"));
+    btnDe.addEventListener("click", () => setLanguage("de"));
+  </script>
+</body>
+</html>

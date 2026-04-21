@@ -1,0 +1,17 @@
+{
+  "name": "Latte Art Portfolio",
+  "description": "A beautiful bilingual portfolio website showcasing barista latte art creations",
+  "homepage": "https://github.com/michaeljtong01-svg/latte_art_portfolio",
+  "keywords": [
+    "latte-art",
+    "barista",
+    "coffee",
+    "portfolio",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Micheal Tong",
+  "license": "MIT"
+}
+
